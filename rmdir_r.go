@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -49,7 +50,11 @@ func rmdirR(directory string) {
 }
 
 func main() {
-	rmdirR("2014")
+	flag.Parse()
+	for _, arg := range flag.Args() {
+		fmt.Printf("rmdir_recurs. %s\n", arg)
+		rmdirR(arg)
+	}
 }
 
 // vim: set ts=2 sw=2 list ft=go:
